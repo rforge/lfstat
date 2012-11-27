@@ -1,0 +1,60 @@
+\name{Q95}
+\alias{Q95}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Q95
+}
+\description{
+Calculates the Q95 of an object of class 'lfobj'.
+}
+\usage{
+Q95(lfobj, year = "any", monthly = FALSE, yearly = FALSE,
+breakdays = NULL, na.rm = TRUE)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{lfobj}{An object of class "lfobj"
+}
+  \item{year}{
+The year for which the Q95 should be computed. If hyearstart != 1 the Q95 is calculated for the hydrological year! "any" means the whole series should be taken.
+}
+  \item{monthly}{
+logical - Should the Q95 be calculated separately for every month?. 
+}
+  \item{yearly}{
+logical - If TRUE,  the Q95 is calculated for each hydrological year separately. 
+} 
+ \item{breakdays}{
+A vector of breakdays if the Q95 should be calculated for different seasons. 
+}
+\item{na.rm}{Should NA's be ignored?}
+}
+\details{
+If breakdays is a single day, e.g. "01/06", the start of the hydrological year is taken as the second breakday. If more than two seasons are to be specified, a vector of all breakdays is needed.
+}
+
+\value{
+A length one vector giving the Q95 for the whole series or the specified
+year. If yearly is true, a vector of the annual Q95s is returned. If
+breakdays are specified, the values are separated per season.
+}
+\references{
+Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+}
+\author{
+%%  ~~who you are~~
+}
+\note{
+%%  ~~further notes~~
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{\code{\link{MAM}}}
+
+\examples{
+data(ngaruroro)
+Q95(ngaruroro)
+Q95(ngaruroro, breakdays = c("01/11","01/05"))
+Q95(ngaruroro, year = 1991)
+}

@@ -1,0 +1,53 @@
+\name{readlfdata}
+\alias{readlfdata}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Reads data sheets
+}
+\description{
+Reads data sheets of different formats directly as lfobjs.
+}
+\usage{
+readlfdata(file, type = c("GRDC", "HZB", "LFU", "TU"), lfobj = TRUE, 
+    hyearstart = 1, baseflow = TRUE)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{file}{The name of the file which the data are to be read from.}
+  \item{type}{The style of the sheet, currently the following formats
+are accepted: "GRDC", "HZB" (Austria), "LFU" (Germany, Bavaria), "TU"
+(Technical University Vienna)}
+  \item{lfobj}{logical, should a lfobj be created?}
+  \item{hyearstart}{integer, which month should the hydrological year
+start?}
+  \item{baseflow}{logical, should the baseflow curve be calculated?
+Needed, if you want to apply \code{\link{bfplot}} or \code{\link{BFI}} later on.}
+}
+\value{
+A lfobj or data.frame depending on "lfobj".
+}
+
+\references{
+Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+}
+\author{
+Daniel Koffler (daniel.koffler@boku.ac.at)
+}
+\note{
+If you like other file formats (national standards)
+to be includes, send some examples with a remark how NAs are marked to
+the author
+}
+\seealso{\code{\link{createlfobj}}}
+
+
+\examples{
+#Finding the sample file on your computer
+path <- system.file("samplesheets/9104020.day", package = "lfstat")
+
+grdc <- readlfdata(path, type = "GRDC", baseflow = FALSE)
+#Some test...
+head(grdc)
+}
+\keyword{}
+\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

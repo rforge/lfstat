@@ -1,0 +1,34 @@
+\name{RcmdrlfstatPlugin-internal}
+\title{Internal RcmdrlfstatPlugin objects}
+\alias{BFIcalc}
+\alias{MAMcalc}
+\alias{Q95calc}
+\alias{activelf}
+\alias{activelfandbf}
+\alias{bfplotcalc}
+\alias{createlfdatacalc}
+\alias{dmcurvecalc}
+\alias{fdccalc}
+\alias{getlfopt}
+\alias{hydrocalc}
+\alias{listlfobj}
+\alias{loadlfopt}
+\alias{meanflowcalc}
+\alias{multitablecalc}
+\alias{nalfcheckcalc}
+\alias{readlfdatasheet}
+\alias{recessionanalysis}
+\alias{resetlfoptions}
+\alias{rfacalc}
+\alias{savelfopt}
+\alias{sbplotcalc}
+\alias{seasindexcalc}
+\alias{seasratiocalc}
+\alias{setunitcalc}
+\alias{streamdefcalc}
+\alias{streamdefplotcalc}
+\alias{tyearscalc}
+\alias{updatelfcalc}
+\description{Internal RcmdrlfstatPlugin objects.}
+\details{These are not to be called by the user.}
+\keyword{internal}
