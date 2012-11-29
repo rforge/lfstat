@@ -278,7 +278,7 @@ seglenplot <- function(lfobj,
    
   run <- rle(segment)   
   
-  x11(width = 14, height = 7, title = "Recession duration (days)")
+ #x11(width = 14, height = 7, title = "Recession duration (days)")
   tab <- table(run$length[run$value])
   splot<-barchart(tab[!(names(tab) %in% c("1","2","3"))],main = "Recession duration", xlab = paste("Days using Q", threslevel, " as threshold",sep = ""),horizontal = FALSE)
   splot
