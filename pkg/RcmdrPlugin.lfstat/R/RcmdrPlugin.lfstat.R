@@ -1,4 +1,4 @@
-.First.lib <- function(libname, pkgname){
+.onLoad <- function(libname, pkgname){
     resetlfoptions() ####Ev. alte Einstellungen laden!
     if (!interactive()) return()
     Rcmdr <- options()$Rcmdr
