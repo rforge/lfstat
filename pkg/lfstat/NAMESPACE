@@ -30,6 +30,7 @@ recessionplot
   
  S3method(createlfobj, ts)
  S3method(createlfobj, lfobj)
+ S3method(createlfobj, data.frame)
  S3method(summary, lfobj)
  S3method(print, lfobjsummary)
  S3method(plot,lfobj)

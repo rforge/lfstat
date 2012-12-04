@@ -16,25 +16,23 @@ created out of a time series of daily flow, a data.frame with columns
 \usage{
 createlfobj(x, ...)
 
-## S3 method for class 'data.frame' with columns 'flow', 'year',
-## 'month', 'day'
+
 \method{createlfobj}{data.frame}(x, hyearstart = 1, baseflow = TRUE,...)
-## S3 method for class 'ts'
+
 \method{createlfobj}{ts}(x,
             startdate,
             dateformat = "\%d/\%m/\%Y",
             ...)
-## S3 method for class 'lfobj'
 \method{createlfobj}{lfobj}(x, hyearstart = NULL, baseflow = NULL,...)
 }
 \arguments{
   \item{x}{
 An object out of which a lfobj should be created
 }
-\item{flow}{The daily runoff data}
-\item{day}{A vector of "day" as part of date}
-\item{month}{A vector of "month" as part of date}
-\item{year}{A vector of "year" as part of date}
+%\item{flow}{The daily runoff data}
+%\item{day}{A vector of "day" as part of date}
+%\item{month}{A vector of "month" as part of date}
+%\item{year}{A vector of "year" as part of date}
   \item{hyearstart}{
 integer, which month should the hydrological year start?
 }

@@ -46,7 +46,7 @@ for(ii in seq_along(finaltp)[-1]-1){
 toohigh <- which(dat$baseflow > dat$flow)
 dat$baseflow[toohigh] <- dat$flow[toohigh]
 
-dat
+dat[,-6]
 } #END OF function baseflow!
 
 #Calculating BFI
