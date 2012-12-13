@@ -25,7 +25,5 @@ Maintainer: Daniel Koffler <daniel.koffler@boku.ac.at>
 }
 
 \keyword{ package }
-\seealso{
-\code{\link[Rcmdr]{Rcmdr}}.
-}
+
 
