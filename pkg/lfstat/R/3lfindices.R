@@ -186,13 +186,14 @@ recessionplot <- function(lfobj,
                          peakreturn = FALSE,
                          thresplot = TRUE,
                          threscol = "blue",
-                         threslevel = 70,
+                         threshold = 70,
                          thresbreaks = c("fixed","monthly","seasonal"),
-                         breakdays = c("01/06","01/10"),
+                         thresbreakdays = c("01/06","01/10"),
                          recessionperiod = TRUE,
                          recessioncol = "darkblue",
                          seglength = 7,
                          ...){
+  threslevel <- threshold
   rainpeaklevel <- peaklevel
   pcheck(rainpeaklevel)
 
@@ -207,7 +208,7 @@ recessionplot <- function(lfobj,
   threshold <- buildthres(lfobj=lfobj,
                         threslevel = threslevel,
                         thresbreaks = thresbreaks,
-                        breakdays = breakdays)
+                        breakdays = thresbreakdays)
   lfobj$row <- as.numeric(row.names(lfobj))
   full <- merge(lfobj, threshold, by = c("day","month"),sort = FALSE)
   full <- full[order(full$row),]
@@ -472,19 +473,28 @@ meanflow <- function(lfobj,year = "any",monthly = FALSE,yearly = FALSE,breakdays
 #########################
 #Q95                    #
 #########################
+Q95 <-  function(lfobj,year = "any",monthly = FALSE, yearly = FALSE, breakdays = NULL,na.rm = TRUE){
+  Qxx(lfobj = lfobj, Qxx = 95, monthly = monthly, yearly = yearly, breakdays = breakdays, na.rm = na.rm)}
 
-Q95 <- function(lfobj,year = "any",monthly = FALSE, yearly = FALSE, breakdays = NULL,na.rm = TRUE){
+Q90 <-  function(lfobj,year = "any",monthly = FALSE, yearly = FALSE, breakdays = NULL,na.rm = TRUE){
+  Qxx(lfobj = lfobj, Qxx = 90, monthly = monthly, yearly = yearly, breakdays = breakdays, na.rm = na.rm)}
+
+Q70 <-  function(lfobj,year = "any",monthly = FALSE, yearly = FALSE, breakdays = NULL,na.rm = TRUE){
+  Qxx(lfobj = lfobj, Qxx = 70, monthly = monthly, yearly = yearly, breakdays = breakdays, na.rm = na.rm)}
+      
+Qxx <- function(lfobj,Qxx,year = "any",monthly = FALSE, yearly = FALSE, breakdays = NULL,na.rm = TRUE){
   lfcheck(lfobj)
   if(!all(year %in% c(min(lfobj$hyear):max(lfobj$hyear),"any"))){
     stop("'year must be within the range of your data or \"any\" for calculating the Q95  of the whole series")}
+  prob <- 1 - Qxx/100
   dummi <- year
   if(!any(dummi == "any")){
     lfobj <- subset(lfobj,hyear %in% dummi)}
 
   if(!is.null(breakdays)){
     if(!yearly){
-    return(aggregate(flow~seasonname,usebreakdays(lfobj,breakdays),quantile,probs = .05,na.rm = na.rm))} else{
-    return(aggregate(flow~seasonname+hyear,usebreakdays(lfobj,breakdays),quantile,probs = .05,na.rm = na.rm))}
+    return(aggregate(flow~seasonname,usebreakdays(lfobj,breakdays),quantile,probs = prob,na.rm = na.rm))} else{
+    return(aggregate(flow~seasonname+hyear,usebreakdays(lfobj,breakdays),quantile,probs = prob,na.rm = na.rm))}
   }
  #Reordering the table according to the hyear
   if(monthly){
@@ -497,13 +507,13 @@ Q95 <- function(lfobj,year = "any",monthly = FALSE, yearly = FALSE, breakdays = 
   }
        if(monthly){
          if(!yearly){
-         aggregate(flow~month,lfobj,quantile,probs = .05,na.rm = na.rm)[monthorder,]} else{
-         aggregate(flow~month+hyear,lfobj,quantile,probs = .05,na.rm = na.rm)}}else{
+         aggregate(flow~month,lfobj,quantile,probs = prob,na.rm = na.rm)[monthorder,]} else{
+         aggregate(flow~month+hyear,lfobj,quantile,probs = prob,na.rm = na.rm)}}else{
          if(!yearly){ 
-            a <- quantile(lfobj$flow,probs = .05,na.rm = na.rm)
+            a <- quantile(lfobj$flow,probs = prob,na.rm = na.rm)
             names(a) <- NULL
           return(a)} else{
-         aggregate(flow~hyear,lfobj,quantile,probs = .05,na.rm = na.rm)}}
+         aggregate(flow~hyear,lfobj,quantile,probs = prob,na.rm = na.rm)}}
 }
 
 #########################

@@ -77,7 +77,7 @@ dmcurve <- function(x,y,year = "any",namex = substitute(x),namey = substitute(y)
 #Hydrograph             #
 #########################
 
-hydrograph <- function(lfobj, startdate = NULL, enddate = NULL, amin = FALSE){
+hydrograph <- function(lfobj, startdate = NULL, enddate = NULL, amin = FALSE,...){
   lfcheck(lfobj)
 
 if(is.null(startdate)){
@@ -137,7 +137,8 @@ plot(x=xplot,
      xlim = c(min(xplot),max(xplot) + 1.2),
      xlab = "",
      xaxs = "i",
-     ylab = lflabel("Flow"))
+     ylab = lflabel("Flow"),
+     ...)
 axis(1, at = xachse[monstart], labels = label)
 
 if(amin){

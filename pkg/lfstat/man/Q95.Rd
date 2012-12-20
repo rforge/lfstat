@@ -1,20 +1,34 @@
-\name{Q95}
+\name{Qxx}
 \alias{Q95}
+\alias{Qxx}
+\alias{Q70}
+\alias{Q90}
+
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Q95
+Qxx, Q95, Q90, Q70
 }
 \description{
-Calculates the Q95 of an object of class 'lfobj'.
+Calculates the quantiles of an object of class 'lfobj'.
 }
 \usage{
+Qxx(lfobj, Qxx, year = "any", monthly = FALSE, yearly = FALSE,
+breakdays = NULL, na.rm = TRUE)
+
 Q95(lfobj, year = "any", monthly = FALSE, yearly = FALSE,
+breakdays = NULL, na.rm = TRUE)
+
+Q90(lfobj, year = "any", monthly = FALSE, yearly = FALSE,
+breakdays = NULL, na.rm = TRUE)
+
+Q70(lfobj, year = "any", monthly = FALSE, yearly = FALSE,
 breakdays = NULL, na.rm = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{lfobj}{An object of class "lfobj"
-}
+  }
+  \item{Qxx}{The quantile to calculate, e.g. 70 would refer to Q70}
   \item{year}{
 The year for which the Q95 should be computed. If hyearstart != 1 the Q95 is calculated for the hydrological year! "any" means the whole series should be taken.
 }
@@ -57,4 +71,6 @@ data(ngaruroro)
 Q95(ngaruroro)
 Q95(ngaruroro, breakdays = c("01/11","01/05"))
 Q95(ngaruroro, year = 1991)
+#Calculate Q99
+Qxx(ngaruroro, Qxx = 99)
 }

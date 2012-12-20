@@ -8,7 +8,7 @@ Hydrograph
 Plots the hydrograph for a given period.
 }
 \usage{
-hydrograph(lfobj, startdate = NULL, enddate = NULL, amin = FALSE) 
+hydrograph(lfobj, startdate = NULL, enddate = NULL, amin = FALSE,...) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,6 +16,8 @@ hydrograph(lfobj, startdate = NULL, enddate = NULL, amin = FALSE)
   \item{startdate}{Begin of hydrograph, date or hydrological year}
   \item{enddate}{End of hydrograph, date or hydrological year}
   \item{amin}{logical, mark annual minima?}
+  \item{...}{Additional arguments handed to "plot" - please note that
+    some changes e.g. tickmarks on x-axis are not possible}
 }
 
 \details{
@@ -44,6 +46,9 @@ hydrograph(ngaruroro)
 hydrograph(ngaruroro, startdate = 1981, enddate = 1982, amin = TRUE)
 #From 01/01/1981 to 31/03/1981
 hydrograph(ngaruroro, startdate = "01/01/1981", enddate = "31/03/1981")
+#Log - yaxis
+hydrograph(ngaruroro, startdate = "01/01/1981", enddate =
+"31/03/1981",log = "y")
 }
 \keyword{}
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

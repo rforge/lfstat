@@ -400,9 +400,9 @@ Pressedrainplot <- function()
                       ', startdate = ',pyear,
                       ', enddate =', pyear,
                       ', seglength =', seg,
-                      ', threslevel =', threshold,
+                      ', threshold =', threshold,
                       ', thresbreaks = "', breaks,'"',
-                      ', breakdays = c(', bday,'))')
+                      ', thresbreakdays = c(', bday,'))')
      doItAndPrint(command)
   }
 

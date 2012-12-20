@@ -14,9 +14,9 @@ recessionplot(lfobj,
               peakreturn = FALSE,
               thresplot = TRUE,
               threscol = "blue",
-              threslevel = 70,
+              threshold = 70,
               thresbreaks = c("fixed","monthly","seasonal"),
-              breakdays = c("01/06","01/10"),
+              thresbreakdays = c("01/06","01/10"),
               recessionperiod = TRUE,
               recessioncol = "darkblue",
               seglength = 7,
@@ -31,12 +31,12 @@ recessionplot(lfobj,
   \item{peakreturn}{Should a logical with rainpeaks be returned}
   \item{thresplot}{Should the threshold be plotted}
   \item{threscol}{Color of threshold in plot}
-  \item{threslevel}{Threshold level (70 refers to Q70)}
+  \item{threshold}{Threshold level (70 refers to Q70)}
   \item{thresbreaks}{"fixed" uses a fixed threshold level, "monthly"
     calculates the threshold for every month separatly, "seasonal"
     calculates thresholds for every season defined using
     "thresbreakdays".}
-   \item{breakdays}{Needed if "thresbreaks = 'seasonal'" to define
+   \item{thresbreakdays}{Needed if "thresbreaks = 'seasonal'" to define
     the periodes for which separate thresholds should be calculated, see
     details}
   \item{recessionperiod}{Should recession periodes be marked}
