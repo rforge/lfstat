@@ -55,7 +55,7 @@ of March 2011 ist part of the hydrological year 2010.
 An object of class 'lfobj'.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
 Daniel Koffler

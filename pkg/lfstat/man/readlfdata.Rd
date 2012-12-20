@@ -28,10 +28,10 @@ A lfobj or data.frame depending on "lfobj".
 }
 
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-Daniel Koffler (daniel.koffler@boku.ac.at)
+Daniel Koffler and Gregor Laaha
 }
 \note{
 If you like other file formats (national standards)

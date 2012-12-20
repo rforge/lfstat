@@ -34,7 +34,7 @@ Laaha,G. Process Based Regionalisation of Low Flows, Band 198 von Wiener
 Mitteilungen, Inst. f{\"u}r Wasserbau u. Ingenieurhydrologie,
 Techn. Univ. Wien, 2006, ISBN 3852340896}
 \author{
-Daniel Koffler (daniel.koffler@boku.ac.at)
+Daniel Koffler and Gregor Laaha
 }
 \seealso{\code{\link{seasindex}}}
 

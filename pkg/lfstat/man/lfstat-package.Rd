@@ -10,9 +10,7 @@ The "Manual on Low-flow Estimation and Prediction", published by the World Meteo
 }
 \details{
 
-###################################
-# Create lfobj (Low-Flow-Objects) #
-###################################
+### Create lfobj (Low-Flow-Objects)
 
 The package calculates induces and makes graphics for low flow
 analysis. It brings its own class "lfobj", a special data.frame format
@@ -28,53 +26,49 @@ calculated or single years are plotted, the "hyear" is taken.
 Basically there are to options to create an lfobj:
 
 If you have special data format, e.g. GRDC, you can use the function
-'readlfdata', see '?readlfdata' to see which formats are currently
+\code{\link{readlfdata}}, see '?readlfdata' to see which formats are currently
 supported.
-Otherwise you can use 'createlfobj'. You can apply it for new data in
+Otherwise you can use \code{\link{createlfobj}}. You can apply it for new data in
 one of two ways:
 1) You create a data.frame with columns: "day", "month", "year" and
 "flow".
 2) You create a time-series (ts) from "flow" and give the start date of
 the series when calling 'createlfobj'.
 
-##############################
-# Preparation                #
-##############################
+### Preparation
 
 lfstat does not need to know the unit of the flow, but you might want it
-to appear in your plots. You can use 'setlfunit' to define how units are
+to appear in your plots. You can use \code{\link{setlfunit}} to define how units are
 labeled in your graphics. Examples are given in '?setlfunit'.
 
-Please check for NA-values using 'lfnacheck', indices and plots are made
+Please check for NA-values using \code{\link{lfnacheck}}, indices and plots are made
 as if series were complete. See the manual on how to deal with missing
-values and, if reasonable, use 'lfnainterpolate'.
+values and, if reasonable, use \code{\link{lfnainterpolate}}.
 
-###############################
-# Indices                     #
-###############################
-Functions available (see ?function for more information)
-'meanflow', 'Q95', 'MAM' (mean annual minima), 'BFI', 'recession' (recession constant),
-'streamdef' (Streamflow deficit), tyears (Extreme value - T-years
- event), 'seasratio', 'seasindex' and 'multistationsreport'.
-################################
-# Plots                        #
-################################
-'hydrograph'
-'recessionplot' (Diagnosis for recession)
-'fdc' (Flow-duration-curve)
-'sbplot' (seasonal barchart)
-'seglenplot' (select recession length for 'recession')
-'streamdefplot' (Streamflow deficit)
-'rfa' (Regional frequency analysis)
-'dmcurve' (Double mass curve)
+### Indices
 
+Functions available
+\code{\link{meanflow}}, \code{\link{Qxx}}, \code{\link{MAM}} (mean annual minima), \code{\link{BFI}}, \code{\link{recession}} (recession constant),
+\code{\link{streamdef}} (Streamflow deficit), \code{\link{tyears}}
+(Extreme value - T-years event), \code{\link{seasratio}}, \code{\link{seasindex}} and \code{\link{multistationsreport}}.
+
+### Plots
+
+\code{\link{hydrograph}}
+\code{\link{recessionplot}} (Diagnosis for recession)
+\code{\link{fdc}} (Flow-duration-curve)
+\code{\link{sbplot}} (seasonal barchart)
+\code{\link{seglenplot}} (select recession length for \code{\link{recession}})
+\code{\link{streamdefplot}} (Streamflow deficit)
+\code{\link{rfa}} (Regional frequency analysis)
+\code{\link{dmcurve}} (Double mass curve)
 
 }
 \author{
-Daniel Koffler <daniel.koffler@boku.ac.at>
+Daniel Koffler <daniel.koffler@boku.ac.at> and Gregor Laaha <gregor.laaha@boku.ac.at>
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 
 \keyword{low flow, WMO}

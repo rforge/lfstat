@@ -30,10 +30,10 @@ A lfobj, as created with 'createlfobj'
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-%%  ~~who you are~~
+Daniel Koffler and Gregor Laaha
 }
 \note{
 %%  ~~further notes~~

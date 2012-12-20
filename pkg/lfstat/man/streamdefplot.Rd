@@ -43,7 +43,7 @@ A vector of breakdays if thresbreaks = "seasonal". Please enter the breakdays us
 %% ...
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
 Daniel Koffler <daniel.koffler@boku.ac.at>

@@ -9,8 +9,8 @@
      }
      \usage{data(ngaruroro)}
      \format{A lfobj \code{\link{createlfobj}}}
-     \source{Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009}
+     \source{Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.}
      \references{
-       Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+       Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
      }
      \keyword{datasets}

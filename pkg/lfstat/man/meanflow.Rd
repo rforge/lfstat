@@ -2,7 +2,7 @@
 \alias{meanflow}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Meanflow
+Mean flow
 }
 \description{
 Calculates the meanflow of an object of class 'lfobj'.
@@ -39,10 +39,10 @@ year. If yearly is true, a vector of the annual meanflows is returned. If
 breakdays are specified, the values are separated per season.
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-%%  ~~who you are~~
+Daniel Koffler and Gregor Laaha
 }
 \note{
 %%  ~~further notes~~

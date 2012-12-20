@@ -26,7 +26,7 @@ J. R. M. Hosking (2012). L-moments. R package, version 1.6. URL:
   http://CRAN.R-project.org/package=lmom.
 }
 \author{
-Daniel Koffler (daniel.koffler@boku.ac.at)
+Daniel Koffler and Gregor Laaha
 }
 
 \examples{

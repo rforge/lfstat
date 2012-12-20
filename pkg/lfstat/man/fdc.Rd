@@ -38,10 +38,10 @@ If breakdays is a single day, e.g. "01/06", the start of the hydrological year i
 A vector of quantiles.
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-%%  ~~who you are~~
+Daniel Koffler and Gregor Laaha
 }
 \note{
 %%  ~~further notes~~

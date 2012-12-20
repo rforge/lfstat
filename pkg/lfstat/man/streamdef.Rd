@@ -61,7 +61,7 @@ A data frame containing characteristics of all low flow periods.
 Please note that when using the "IT" method the end date of the low flow periode is not necessarily startdate + duration.
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
 Daniel Koffler <daniel.koffler@boku.ac.at>
@@ -76,81 +76,6 @@ Daniel Koffler <daniel.koffler@boku.ac.at>
 streamdefplot, createlfobj
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (lfobj, pooling = c("none", "MA", "IT", "IC"), thres = 0.7, 
-    MAdays = 7, tmin = 5, IClevel = 0.1, mindur = 0, minvol = 0) 
-{
-    lfcheck(lfobj)
-    pooling <- match.arg(pooling)
-    if (pooling == "MA") {
-        ma <- function(x, n) {
-            filter(x, rep(1/n, n), sides = 2, circular = TRUE)
-        }
-    }
-    flow <- switch(pooling, none = lfobj$flow, IT = lfobj$flow, 
-        IC = lfobj$flow, MA = as.vector(ma(x = lfobj$flow, n = MAdays)))
-    threshold <- quantile(lfobj$flow, thres)
-    defrun <- rle(flow <= threshold)
-    pos <- c(cumsum(c(1, defrun$lengths)))
-    streamdef <- data.frame(matrix(ncol = 5))
-    names(streamdef) <- c("pos", "d", "v", "mi", "Qmin")
-    a <- pos[defrun$values]
-    a <- a[-length(a)]
-    d <- defrun$lengths[defrun$values]
-    for (ii in seq_along(a)) {
-        streamdef[ii, 1] <- a[ii]
-        streamdef[ii, 2] <- d[ii]
-        streamdef[ii, 3] <- sum(flow[a[ii]:(a[ii] + d[ii] - 1)]) - 
-            d[ii] * threshold
-    }
-    if (pooling == "IT") {
-        for (ii in nrow(streamdef):2) {
-            if (streamdef[ii, "pos"] - streamdef[ii - 1, "d"] - 
-                tmin < streamdef[ii - 1, "pos"]) {
-                streamdef[ii - 1, "d"] <- streamdef[ii, "d"] + 
-                  streamdef[ii - 1, "d"]
-                streamdef[ii - 1, "v"] <- streamdef[ii, "v"] + 
-                  streamdef[ii - 1, "v"]
-                streamdef <- streamdef[-ii, ]
-            }
-        }
-    }
-    if (pooling == "IC") {
-        for (ii in nrow(streamdef):2) {
-            if (streamdef[ii, "pos"] - streamdef[ii - 1, "d"] - 
-                tmin < streamdef[ii - 1, "pos"]) {
-                s <- sum((flow[(streamdef[ii - 1, "pos"] + streamdef[ii - 
-                  1, "d"]):(streamdef[ii, "pos"] - 1)]) - threshold)
-                if (s/streamdef[ii - 1, "v"] > IClevel) {
-                  streamdef[ii - 1, "d"] <- streamdef[ii, "pos"] - 
-                    streamdef[ii - 1, "pos"] + streamdef[ii, 
-                    "d"]
-                  streamdef <- streamdef[-ii, ]
-                }
-            }
-        }
-    }
-    for (ii in seq_along(streamdef$pos)) {
-        if (pooling == "IC") {
-            streamdef[ii, 3] <- sum(flow[streamdef[ii, "pos"]:(streamdef[ii, 
-                "pos"] + streamdef[ii, "d"] - 1)]) - streamdef[ii, 
-                "d"] * threshold
-        }
-        streamdef[ii, 4] <- streamdef[ii, "v"]/streamdef[ii, 
-            "d"]
-        streamdef[ii, 5] <- min(flow[streamdef[ii, "pos"]:(streamdef[ii, 
-            "pos"] + streamdef[ii, "d"] - 1)])
-    }
-    if (pooling \%in\% c("IC", "IT")) {
-        streamdef <- streamdef[streamdef$d > mindur & streamdef$v < 
-            -minvol, ]
-    }
-    streamdef
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

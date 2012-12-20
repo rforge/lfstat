@@ -57,10 +57,10 @@ This function can be used to check different values of peaklevel.
 \value{If peakreturn = TRUE: A logical vector giving rainpeaks as TRUE}
 
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-Daniel Koffler (daniel.koffler@boku.ac.at)
+Daniel Koffler and Gregor Laaha
 }
 \seealso{\code{\link{recession}}}
 \examples{

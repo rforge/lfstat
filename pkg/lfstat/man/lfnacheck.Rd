@@ -21,7 +21,7 @@ A list with the total number of NAs, the percentage, the NAs for every
 year and the durations of NA-series.
 }
 \references{
-Manual on Low-flow Estimation and Prediction, Operational Hydrology Report No. 50, Koblenz 2009
+Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 
 \seealso{\code{\link{bfplot}}}
