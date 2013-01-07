@@ -1,6 +1,6 @@
 activelf <- function(){
   activeDataSetP() && inherits(justDoIt(activeDataSet()),'lfobj')
-}
+} 
 
   
 
