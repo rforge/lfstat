@@ -17,13 +17,15 @@ created out of a time series of daily flow, a data.frame with columns
 createlfobj(x, ...)
 
 
-\method{createlfobj}{data.frame}(x, hyearstart = 1, baseflow = TRUE,...)
+\method{createlfobj}{data.frame}(x, hyearstart = 1, baseflow = TRUE,
+                     meta = list(),...)
 
 \method{createlfobj}{ts}(x,
             startdate,
             dateformat = "\%d/\%m/\%Y",
             ...)
-\method{createlfobj}{lfobj}(x, hyearstart = NULL, baseflow = NULL,...)
+\method{createlfobj}{lfobj}(x, hyearstart = NULL, baseflow = NULL,
+                            meta = NULL,...)
 }
 \arguments{
   \item{x}{
@@ -40,6 +42,7 @@ integer, which month should the hydrological year start?
   logical, should the baseflow curve be calculated? Needed, if you want
   to apply 'bfplot' or 'BFI' later on.
 }
+\item{meta}{A list of meta-information}
 \item{startdate}{Startdate of the time-series}
 \item{dateformat}{Format of the startdate}
 \item{...}{Additional arguments depending on the method used.}
@@ -80,8 +83,8 @@ time <- ts(somevalues)
 #Lets say our data contains values from one hydrological year (Oct-Sep)
 #starting on 1. Oct. 1992:
 myriver <- createlfobj(time, startdate = "01/10/1992",hyearstart = 10)
-#Done
-hydrograph(myriver)
+#Add meta-data
+createlfobj(myriver, meta = list(river = "myriver"))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

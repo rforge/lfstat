@@ -8,8 +8,7 @@ Reads data sheets
 Reads data sheets of different formats directly as lfobjs.
 }
 \usage{
-readlfdata(file, type = c("GRDC", "HZB", "LFU", "TU"), lfobj = TRUE, 
-    hyearstart = 1, baseflow = TRUE)
+readlfdata(file, type = c("GRDC", "HZB", "LFU", "TU"), lfobj = TRUE, readmeta = TRUE,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,10 +17,10 @@ readlfdata(file, type = c("GRDC", "HZB", "LFU", "TU"), lfobj = TRUE,
 are accepted: "GRDC", "HZB" (Austria), "LFU" (Germany, Bavaria), "TU"
 (Technical University Vienna)}
   \item{lfobj}{logical, should a lfobj be created?}
-  \item{hyearstart}{integer, which month should the hydrological year
-start?}
-  \item{baseflow}{logical, should the baseflow curve be calculated?
-Needed, if you want to apply \code{\link{bfplot}} or \code{\link{BFI}} later on.}
+  \item{readmeta}{logical, should metainformation from data sheets be
+    saved?}
+  \item{...}{Handed to createlfobj, could be "hyearstart", "baseflow" or
+  "meta", if "readmeta" is FALSE}
 }
 \value{
 A lfobj or data.frame depending on "lfobj".

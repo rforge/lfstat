@@ -4,7 +4,7 @@
 
 createlfobj <- function(x,...){UseMethod("createlfobj")}
 
-createlfobj.lfobj <- function(x, hyearstart = NULL, baseflow = NULL,...){
+createlfobj.lfobj <- function(x, hyearstart = NULL, baseflow = NULL, meta = NULL,...){
   if(is.null(baseflow)){
    baseflow <- "baseflow" %in% names(x)}
   if(is.null(hyearstart)){
@@ -15,7 +15,9 @@ createlfobj.lfobj <- function(x, hyearstart = NULL, baseflow = NULL,...){
   bf <- baseflow
   hy <- hyearstart
 
-  dat <- createlfobj.data.frame(x=x,hyearstart = hy, baseflow = bf)
+  if(is.null(meta)){meta <- attr(x,"lfobj")}
+  
+  dat <- createlfobj.data.frame(x=x,hyearstart = hy, baseflow = bf,meta = meta)
   dat
   }
 
@@ -40,13 +42,18 @@ createlfobj.ts <- function(x, startdate, dateformat = "%d/%m/%Y", ...){
 
 
 #Create a lfobj from a data frame with cols named "flow", "day", "month", "year"
-createlfobj.data.frame <- function(x, hyearstart = 1,baseflow = TRUE,...){
+createlfobj.data.frame <- function(x, hyearstart = 1,baseflow = TRUE,meta = list(),...){
 
 if(prod(c("flow", "day", "month", "year") %in% names(x))!= 1)
   {stop("Your data.frame must contain colums named 'flow', 'day, 'month' and 'year'! Please look at the help files for more information")}
 
 if(!(hyearstart %in% 1:12)){
     stop("hyearstart must be whole number between 1 and 12")}
+if(!(hyearstart %in% 1:12)){
+    stop("hyearstart must be whole number between 1 and 12")}
+if(!is.list(meta)){
+    stop("meta must be a list")
+  }
 
  dat <- data.frame(day = x$day,
                    month = x$month,
@@ -76,8 +83,15 @@ rownames(dat) <- seq(length=nrow(dat))
 dat <- hyear(dat, startmonth = hyearstart)
 if(baseflow){
 dat <- baseflow(dat)}
+
+#Meta-Information
+attr(dat, "lfobj") <- meta
+
 class(dat) <- c("lfobj","data.frame")
 dat}
+
+
+
 
 lfcheck <- function(lfobj){
 if(!inherits(lfobj,"lfobj")){stop("This functions is designed for objects of the class 'lfobj', please use 'createlfobj' or see '?createlfobj' for more information")}}

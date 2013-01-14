@@ -45,7 +45,6 @@ for(ii in seq_along(finaltp)[-1]-1){
 
 toohigh <- which(dat$baseflow > dat$flow)
 dat$baseflow[toohigh] <- dat$flow[toohigh]
-
 dat[,-6]
 } #END OF function baseflow!
 
@@ -585,7 +584,7 @@ seasindex <- function(lfobj, Q=95,na.rm = TRUE){
     xtheta <- mean(cos(theta))
     ytheta <- mean(sin(theta))
     thetafull <- atan2(ytheta,xtheta)
-    if(thetafull < 0) {thetafull <- thetafull + pi}
+    if(thetafull < 0) {thetafull <- thetafull + 2*pi}
     D = thetafull * 365/(2*pi)
     r = sqrt(xtheta**2+ytheta**2)
     result <- list(theta = thetafull, D = D, r = r)
