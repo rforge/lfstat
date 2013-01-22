@@ -79,7 +79,7 @@ threshold <- buildthres(lfobj = lfobj, threslevel = threslevel, thresbreaks=thre
     for(ii in nrow(streamdef):2){
       if(streamdef[ii,"pos"]-streamdef[ii-1,"d"]-tmin < streamdef[ii-1,"pos"]){
         s <- sum((def[(streamdef[ii-1,"pos"]+streamdef[ii-1,"d"]):(streamdef[ii,"pos"]-1)]))
-        if(s/streamdef[ii-1,"v"]>IClevel){
+        if(-s/streamdef[ii-1,"v"]<IClevel){
           streamdef[ii-1,"d"] <- streamdef[ii,"pos"]-streamdef[ii-1,"pos"]+streamdef[ii,"d"]
           streamdef <- streamdef[-ii,]}}
     }
