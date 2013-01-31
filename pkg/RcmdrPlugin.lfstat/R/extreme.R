@@ -3,7 +3,7 @@
 #########################
 
 tyearscalc <- function(){
-initializeDialog(title=gettextRcmdr("T-years event"))
+initializeDialog(title=gettextRcmdr("T year event"))
 optionsFrame <-  tkframe(top)
 textFrame <- tkframe(top)
 
@@ -53,7 +53,7 @@ OKCancelHelp(helpSubject="tyears")
 	tkgrid(textFrame,sticky = "w")
         tkgrid(labelRcmdr(textFrame, text = gettextRcmdr("Annual n-day minima, n:")),MAentryframe,
                sticky = "w")
-        tkgrid(labelRcmdr(textFrame, text = gettextRcmdr("T-Years:")),tyearsentryframe,
+        tkgrid(labelRcmdr(textFrame, text = gettextRcmdr("Return period T (years):")),tyearsentryframe,
                sticky = "w")
         tkgrid(getFrame(distBox), sticky="nw")
        

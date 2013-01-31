@@ -126,7 +126,7 @@ dialogSuffix(rows=7, columns=2)
 #############################
 
 streamdefplotcalc <- function(){
-  initializeDialog(title = gettextRcmdr("Streamflow Deficite Plot"))
+  initializeDialog(title = gettextRcmdr("Streamflow deficit plot"))
   optionsFrame <- tkframe(top)
   levelFrame <- tkframe(top)
   breakFrame <- tkframe(top)
