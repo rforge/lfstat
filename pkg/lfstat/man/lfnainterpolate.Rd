@@ -26,6 +26,10 @@ lfnainterpolate(lfobj)
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 
+\author{
+Daniel Koffler and Gregor Laaha
+}
+
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \section{Warning }{
 Check carefully in advance if interpolation is a reasionable choice for
@@ -44,5 +48,4 @@ ngaruroroint <- lfnainterpolate(ngaruroro)
 #The completed hydrograph
 hydrograph(ngaruroroint,startdate = "1/7/1987", enddate = "1/9/1987",amin = FALSE)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

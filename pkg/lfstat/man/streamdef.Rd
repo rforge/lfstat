@@ -64,18 +64,17 @@ Please note that when using the "IT" method the end date of the low flow periode
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-Daniel Koffler <daniel.koffler@boku.ac.at>
+Daniel Koffler and Gregor Laaha
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 streamdefplot, createlfobj
 }
 \examples{
+data(ngaruroro)
+#Full Table
+streamdef(ngaruroro,pooling = "MA", MAdays = 6)
+#Annual Volume-Maxima only
+streamdef(ngaruroro,pooling = "MA", MAdays = 6,table = "volmax")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

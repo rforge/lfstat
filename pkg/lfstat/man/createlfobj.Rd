@@ -31,10 +31,6 @@ createlfobj(x, ...)
   \item{x}{
 An object out of which a lfobj should be created
 }
-%\item{flow}{The daily runoff data}
-%\item{day}{A vector of "day" as part of date}
-%\item{month}{A vector of "month" as part of date}
-%\item{year}{A vector of "year" as part of date}
   \item{hyearstart}{
 integer, which month should the hydrological year start?
 }
@@ -61,13 +57,8 @@ An object of class 'lfobj'.
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 \author{
-Daniel Koffler
+Daniel Koffler and Gregor Laaha
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{readlfdata}}
@@ -86,7 +77,6 @@ myriver <- createlfobj(time, startdate = "01/10/1992",hyearstart = 10)
 #Add meta-data
 createlfobj(myriver, meta = list(river = "myriver"))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{ lfobj }
 

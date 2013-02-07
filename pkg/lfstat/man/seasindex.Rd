@@ -43,5 +43,4 @@ data(ngaruroro)
 #Start of the hydrological year (01/12) is taken as second breakday
 seasindex(ngaruroro)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

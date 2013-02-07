@@ -30,6 +30,10 @@ A data.frame containing the calculated indices.
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 
+\author{
+Daniel Koffler and Gregor Laaha
+}
+
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \seealso{\code{\link{meanflow}}, \code{\link{Q95}},\code{\link{MAM}},\code{\link{BFI}},\code{\link{recession}}}
 
@@ -44,5 +48,4 @@ nineties <- subset(ngaruroro, hyear \%in\% 1990:1999)
 
 multistationsreport(seventies, eighties, nineties)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

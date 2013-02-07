@@ -36,6 +36,10 @@ Remove NAs?
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
 
+\author{
+Daniel Koffler and Gregor Laaha
+}
+
 \examples{
 data(ngaruroro)
 n1 <- subset(ngaruroro, year \%in\% 1985:1989)

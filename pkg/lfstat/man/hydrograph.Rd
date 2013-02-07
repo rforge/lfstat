@@ -50,5 +50,4 @@ hydrograph(ngaruroro, startdate = "01/01/1981", enddate = "31/03/1981")
 hydrograph(ngaruroro, startdate = "01/01/1981", enddate =
 "31/03/1981",log = "y")
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

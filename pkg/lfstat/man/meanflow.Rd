@@ -44,9 +44,7 @@ Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Predicti
 \author{
 Daniel Koffler and Gregor Laaha
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

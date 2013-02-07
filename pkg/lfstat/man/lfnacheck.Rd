@@ -23,12 +23,13 @@ year and the durations of NA-series.
 \references{
 Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Prediction. Operational Hydrology Report No. 50, WMO-No. 1029, 136p.
 }
-
+\author{
+Daniel Koffler and Gregor Laaha
+}
 \seealso{\code{\link{bfplot}}}
 
 \examples{
 data(ngaruroro)
 lfnacheck(ngaruroro)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

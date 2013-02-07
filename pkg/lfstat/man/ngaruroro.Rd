@@ -5,7 +5,7 @@
      \description{
     This data set gives the streamflow records from 20/09/1963 to
     31/12/2000. The data structure is a low flow object (lfobj) as used
-    in the package lfstat.
+    in the package lfstat. The rivers hydrological year starts with December.
      }
      \usage{data(ngaruroro)}
      \format{A lfobj \code{\link{createlfobj}}}

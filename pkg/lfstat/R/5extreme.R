@@ -89,16 +89,35 @@ result
 #############################
 
 #gets a list of lfobjs!
-rfa <- function(lfobj,n,...){
-lmom <- data.frame(matrix(ncol = 4))  
-  for(ii in seq_along(lfobj)){
-    lfcheck(lfobj[[ii]])
-    annual <- MAannual(lfobj[[ii]],n)
-    lmom[ii,] <-samlmu(annual$MAn)
-  }
-  names(lmom) <-names(samlmu(annual$MAn))
-  lmrd(lmom,...)
-  }
+#rfa <- function(lfobj,n,...){
+#lmom <- data.frame(matrix(ncol = 4))  
+#  for(ii in seq_along(lfobj)){
+#    lfcheck(lfobj[[ii]])
+#    annual <- MAannual(lfobj[[ii]],n)
+#    lmom[ii,] <-samlmu(annual$MAn)
+#  }
+#  names(lmom) <-names(samlmu(annual$MAn))
+#  lmrd(lmom,...)
+#  }
 
-  
-    
+rfa <- function(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"), plot = TRUE,...){
+  lapply(lflist,lfcheck)
+  distr <- match.arg(dist,several.ok = FALSE)
+  agg <- function(x,N){MAannual(x,N)$MAn}
+  ma <- lapply(lflist,agg, N = n)
+  reg <- regsamlmu(ma)
+  if(plot){lmrd(reg)}
+  rfit <- regfit(reg, dist)
+  tyears <- eval(parse(text = paste0("qua",dist,"(1/event,rfit$para)")))
+  rfit$tyears <- rfit$index * tyears
+  rfit
+}
+
+#sitequant(c(0.9, 0.99, 0.999), rfit, sitenames=1:3)
+
+#Tyears und rfa liefern für einen Standort  die selben Ergebnisse wenn:
+# GEV: ersten beiden parameter mit "Index" gestreckt werden
+# Das T-Years-Event mit "Index" gestreckt wird.
+# Gregor klären, ob:
+# Return values so ok,
+# Anleitung/verweis auf Hoskings zum Checken, weiterrechnen...

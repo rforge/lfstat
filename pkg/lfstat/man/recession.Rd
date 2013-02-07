@@ -75,5 +75,4 @@ Daniel Koffler and Gregor Laaha
 data(ngaruroro)
 recession(ngaruroro,method = "MRC",seglen = 7,threshold = 70)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

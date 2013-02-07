@@ -48,5 +48,4 @@ grdc <- readlfdata(path, type = "GRDC", baseflow = FALSE)
 #Some test...
 head(grdc)
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

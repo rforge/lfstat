@@ -15,7 +15,7 @@ BFI(lfobj, year = "any",breakdays = NULL, yearly = FALSE)
   \item{lfobj}{An object of class "lfobj"
 }
   \item{year}{
-The year for which the BFI should be computed. If hyearstart != 1 the BFI is calculated for the hydrological year! "any" means the whole series should be taken.
+The year for which the BFI should be computed. If hyearstart != 1 the BFI is calculated for the hydrological year "any" means the whole series should be taken.
 }
   \item{breakdays}{
 A vector of breakdays if the BFI should be calculated for different seasons. 
@@ -39,9 +39,7 @@ Gustard, A. & Demuth, S. (2009) (Eds) Manual on Low-flow Estimation and Predicti
 \author{
 Daniel Koffler and Gregor Laaha
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

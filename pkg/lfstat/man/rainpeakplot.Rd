@@ -81,5 +81,4 @@ rain1991 <- subset(ngaruroro, subset = hyear == 1991 && peak, select = c(day, mo
 }
 
 
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

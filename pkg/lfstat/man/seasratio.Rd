@@ -43,5 +43,4 @@ seasratio(ngaruroro, breakdays = "01/07")
 #Two breakdays
 seasratio(ngaruroro, breakdays = c("01/03","01/09"))
 }
-\keyword{}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
