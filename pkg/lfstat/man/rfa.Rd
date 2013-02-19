@@ -5,7 +5,7 @@
 Regional Frequency Analysis
 }
 \description{
-This function uses J.R.M. Hosking's package produce an object of class ‘"rfd"’, containing the specification of the regional frequency distribution.
+This function uses J.R.M. Hosking's package produce an object of class "rfd", containing the specification of the regional frequency distribution.
 }
 \usage{
 rfa(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"))
@@ -49,6 +49,5 @@ sitequant(1/100,toyrfa)
 
 }
 \keyword{Regional Frequency Analysis}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
 
 \seealso{\code{\link{lmom}},\code{\link{lmomRFA}} }
