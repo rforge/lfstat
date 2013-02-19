@@ -100,7 +100,7 @@ result
 #  lmrd(lmom,...)
 #  }
 
-rfa <- function(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"), plot = TRUE,...){
+rfa <- function(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3")){
   lapply(lflist,lfcheck)
   distr <- match.arg(dist,several.ok = FALSE)
   agg <- function(x,N){MAannual(x,N)$MAn}

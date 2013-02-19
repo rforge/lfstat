@@ -20,6 +20,12 @@
 \alias{recessionanalysis}
 \alias{resetlfoptions}
 \alias{rfacalc}
+\alias{isthereanRFD}
+\alias{listrfd}
+\alias{rcgquantiles}
+\alias{rcgsitequantiles}
+\alias{rfaindex}
+\alias{rfap}
 \alias{savelfopt}
 \alias{sbplotcalc}
 \alias{seasindexcalc}
