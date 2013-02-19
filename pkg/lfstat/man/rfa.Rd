@@ -5,10 +5,10 @@
 Regional Frequency Analysis
 }
 \description{
-This function uses J.R.M. Hosking's package lmom to produce a L-moment diagram.
+This function uses J.R.M. Hosking's package produce an object of class ‘"rfd"’, containing the specification of the regional frequency distribution.
 }
 \usage{
-rfa(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"), plot = TRUE,...)
+rfa(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,8 +19,6 @@ rfa(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3"), plot =
   \item{dist}{A vector of distribution to fit, the names are according to
   Hostking's in his "lmom" package. Can be an of
   "wei","gev","ln3","gum","pe3".}
-  \item{plot}{logical, shoult a L-moment diagram be plotted?}
-  \item{...}{is passed to Hosking's function \code{\link{lmrd}}.}
 }
 
 
@@ -43,9 +41,14 @@ seventies <- subset(ngaruroro, hyear \%in\% 1970:1979)
 eighties <- subset(ngaruroro, hyear \%in\% 1980:1989)
 nineties <- subset(ngaruroro, hyear \%in\% 1990:1999)
 
-rfa(list(seventies,eighties,nineties), n=3,dist = "gev")
+toyrfa <- rfa(list(seventies,eighties,nineties), n=3,dist = "gev")
+
+#Now you can work on using Hoskings lmomRFA-package, e.g.
+regquant(c(1/1000,1/100),toyrfa)
+sitequant(1/100,toyrfa)
+
 }
 \keyword{Regional Frequency Analysis}
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
 
-\seealso{\code{\link{lmom}}}
+\seealso{\code{\link{lmom}},\code{\link{lmomRFA}} }
