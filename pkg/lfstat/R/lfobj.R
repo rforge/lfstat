@@ -1,3 +1,7 @@
+if(getRversion() >= "2.15.1"){
+  utils::globalVariables(c("day", "month", "year","flow","tp","baseflow"), add = TRUE)}
+
+
 #Different methods to create a lfobj:
 #Data.frame with named columns
 #ts + start date (does vector work?)

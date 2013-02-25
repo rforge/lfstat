@@ -10,5 +10,4 @@ Suggests: lfstat
 Description: This package provides an Rcmdr "plug-in" based on the
         lfstat package for low flow analysis.
 License: GPL (>= 2)
-Models:
-
+RcmdrModels:
