@@ -19,7 +19,7 @@ License: \tab GPL (>= 2)\cr
 }
 
 \author{
-Daniel Koffler and Gregor Laaha
+Daniel Koffler <daniel.koffler@boku.ac.at> and Gregor Laaha <gregor.laaha@boku.ac.at>
 
 Maintainer: Daniel Koffler <daniel.koffler@boku.ac.at>
 }

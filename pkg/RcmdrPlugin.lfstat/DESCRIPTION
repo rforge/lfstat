@@ -3,10 +3,9 @@ Type: Package
 Title: Rcmdr Plug-In for low flow analysis
 Version: 0.1
 Date: 2011-08-25
-Author: Daniel Koffler <daniel.koffler@boku.ac.at>
+Author: Daniel Koffler and Gregor Laaha
 Maintainer: Daniel Koffler <daniel.koffler@boku.ac.at>
-Depends: Rcmdr (>= 1.4-0), tcltk
-Suggests: lfstat
+Depends: Rcmdr (>= 1.4-0), tcltk, lfstat
 Description: This package provides an Rcmdr "plug-in" based on the
         lfstat package for low flow analysis.
 License: GPL (>= 2)

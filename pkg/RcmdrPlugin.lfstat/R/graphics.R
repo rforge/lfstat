@@ -25,7 +25,7 @@ yearsBox <- variableListBox(top, choice, title=gettextRcmdr("Hydrological year")
 
         closeDialog()
 
-        command <- paste('bfplot(lfobj =',ActiveDataSet(),', year = ',year,')',sep = "")
+        command <- paste('bfplot(lfobj = ',ActiveDataSet(),', year = ',year,')',sep = "")
         doItAndPrint(command)
         tkfocus(CommanderWindow())
 	}
