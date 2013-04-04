@@ -1,16 +1,58 @@
+#.onAttach <- function(libname, pkgname){
+#    resetlfoptions() ####Ev. alte Einstellungen laden!
+#    if (!interactive()) return()
+#    Rcmdr <- options()$Rcmdr
+#    plugins <- Rcmdr$plugins
+#    if ((!pkgname %in% plugins) && !getRcmdr("autoRestart")) {
+#        Rcmdr$plugins <- c(plugins, pkgname)
+#        options(Rcmdr=Rcmdr)
+#        closeCommander(ask=FALSE, ask.save=TRUE)
+#        Commander()
+#        }
+#    }
+
 .onAttach <- function(libname, pkgname){
-    resetlfoptions() ####Ev. alte Einstellungen laden!
+    resetlfoptions()
     if (!interactive()) return()
     Rcmdr <- options()$Rcmdr
     plugins <- Rcmdr$plugins
-    if ((!pkgname %in% plugins) && !getRcmdr("autoRestart")) {
+    if (!pkgname %in% plugins) {
         Rcmdr$plugins <- c(plugins, pkgname)
         options(Rcmdr=Rcmdr)
-        closeCommander(ask=FALSE, ask.save=TRUE)
-        Commander()
+        if("package:Rcmdr" %in% search()) {
+            if(!getRcmdr("autoRestart")) {
+                options(Rcmdr=Rcmdr)
+                closeCommander(ask=FALSE, ask.save=TRUE)
+                Commander()
+            }
+        }
+        else {
+            Commander()
         }
     }
+}
 
+if(getRversion() >= "2.15.1"){
+     utils::globalVariables(c("top",
+                              "buttonsFrame",
+                              "Recode",
+                              "readDataSet",
+                              "periodVariable",
+                              "periodFrame",
+                              "methodVariable",
+                              "methodFrame",
+                              "styleVariable",
+                              "styleFrame",
+                              "thresbreaksVariable",
+                              "thresbreaksFrame",
+                              "linearRegressionModel",
+                              "unitVariable",
+                              "unitFrame",
+                              "poolingVariable",
+                              "tableVariable",
+                              "dsnameValue",
+                              "poolingFrame",
+                              "tableFrame"), add = TRUE)}
 
 readlfdatasheet <- function(){
 initializeDialog(title=gettextRcmdr("New Low Flow Data"))
@@ -62,12 +104,15 @@ entryhyear <- ttkentry(optionsFrame, width = "2",textvariable=hyinit)
 
 command <- paste('readlfdata("', file,'", type="',style,'",hyearstart =',hydro,',baseflow =',bf,')',sep = "")
 
-logger(paste(dsnameValue, " <- ", command, sep=""))
-result <- justDoIt(command)
-if (class(result)[1] !=  "try-error"){
-     assign(dsnameValue, result, envir=.GlobalEnv)
-     activeDataSet(dsnameValue)
-   }
+#Changes as J.Fox in 2013 version
+doItAndPrint(paste(dsnameValue, " <- ", command, sep=""))
+activeDataSet(dsnameValue)
+                
+#result <- justDoIt(command)
+#if (class(result)[1] !=  "try-error"){
+#     gassign(dsnameValue, result)
+#     activeDataSet(dsnameValue)
+#   }
 tkfocus(CommanderWindow())
 }
 OKCancelHelp(helpSubject="readlfdata")
@@ -137,13 +182,13 @@ onOK <- function(){
 
   
   command <- paste("createlfobj(x =ts(",ActiveDataSet(),"$",flowVar,") , startdate = \"",start,"\",hyearstart =",hyear,",baseflow =",bf,")",sep = "")
-  logger(paste(dsnameValue, " <- ", command, sep=""))
-  result <- justDoIt(command)
+  doItAndPrint(paste(dsnameValue, " <- ", command, sep=""))
+#  result <- justDoIt(command)
 
-if (class(result)[1] !=  "try-error"){
-     assign(dsnameValue, result, envir=.GlobalEnv)
-     activeDataSet(dsnameValue)
-   }
+#if (class(result)[1] !=  "try-error"){
+#     gassign(dsnameValue, result)
+#     activeDataSet(dsnameValue)
+#   }
 tkfocus(CommanderWindow())
   
 }#End onOK

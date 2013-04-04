@@ -118,10 +118,10 @@ onOK <- function(){
 command <- paste("streamdef(lfobj = ", ActiveDataSet(), ", pooling = \"",pool,"\", threslevel =",
                  threshold, ", thresbreaks = \"",breaks,"\", breakdays = c(",seas,"), MAdays = ",
                  MAdays, ", tmin = ",Tmin,", IClevel = ", icLevel,", mindur = ", minDur, ",minvol = ",minVol,",table =\"",table,"\")",sep = "")
-  logger(paste(nameValue, " <- ", command, sep=""))
-  result <- data.frame(justDoIt(command))
+  doItAndPrint(paste(nameValue, " <- ", command, sep=""))
+  #result <- data.frame(justDoIt(command))
   #Class?! Deftable needed?!              
-  assign(nameValue, result, envir=.GlobalEnv)
+  #gassign(nameValue, result)
   tkfocus(CommanderWindow())
               } #END ONok
 

@@ -168,8 +168,10 @@ onOK <-  function(){
     
   n <- tclvalue(Madays)
   command <- paste0("rfa(lflist = list(",a,"),n =",n,", dist = ",distname,")")
-  logger(paste0(modelValue, " <- ", command))
-  assign(modelValue, justDoIt(command), envir=.GlobalEnv)
+  doItAndPrint(paste0(modelValue, " <- ", command))
+
+  #gassign(modelValue, justDoIt(command))
+
   activateMenus()
   tkfocus(CommanderWindow())
  }#End on OK

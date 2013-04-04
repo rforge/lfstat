@@ -1,3 +1,9 @@
 #As in Teaching-Demos
-import(tcltk)
+import(Rcmdr)
+importFrom(tcltk, tkwidget)
+	#	tcl, "tclvalue<-", 
+	#	tclVar, tkcheckbutton, tclRequire, tkbind,tkconfigure,tkdelete, 
+	#	tkframe, tkgrid, tkdestroy, tkinsert, tklabel, tkpack, tkselection.clear,  	 #	 tkradiobutton, tkscale,
+	#	tktoplevel)
+
 exportPattern("^[^\\.]")

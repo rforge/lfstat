@@ -171,7 +171,7 @@ seas <- tclvalue(breakseas)
          options("RcmdrPlugin.lfstat" =
               modifyList(getOption("RcmdrPlugin.lfstat"),list(season = seas)))
                 
-command <- paste("streamdefplot(lfobj = ", ActiveDataSet(),",year = ",year, ", threslevel =", threshold, ", thresbreaks = \"",breaks,"\",breakdays =c(",seas,"))",sep = "")
+command <- paste("streamdefplot(lfobj = ", ActiveDataSet(),",year = ",year, ", threslevel =", threshold, ", thresbreaks = \"",breaks,"\", breakdays =c(",seas,"))",sep = "")
 
   doItAndPrint(command)
   #Class?! Deftable needed?!              
