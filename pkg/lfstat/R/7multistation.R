@@ -46,6 +46,6 @@ if("baseflowindex" %in% ind){
    table$BFI <- sapply(args,BFI)
  }
 if("recession" %in% ind){
-   table$recession <- lapply(args,recession,method = recessionmethod, seglength = recessionseglength, threshold = recessionthreshold,plotMRC = FALSE, trimIRS=recessiontrimIRS)
+   table$recession <- sapply(args,recession,method = recessionmethod, seglength = recessionseglength, threshold = recessionthreshold,plotMRC = FALSE, trimIRS=recessiontrimIRS)
  }
 table}
