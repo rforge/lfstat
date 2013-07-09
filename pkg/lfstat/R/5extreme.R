@@ -117,7 +117,7 @@ rfaplot <- function(lflist, n = 7,...){
  agg <- function(x,N){MAannual(x,N)$MAn}
   ma <- lapply(lflist,agg, N = n)
   reg <- regsamlmu(ma)
- lmrd(reg)
+ lmrd(reg,...)
 }
 
 
