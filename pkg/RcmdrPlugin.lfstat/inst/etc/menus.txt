@@ -37,7 +37,10 @@ item	lfoptionsMenu	command		"Reset lf options"			resetlfoptions		    ""			    "p
 item	lfoptionsMenu	command		"Save lf options"			savelfopt		    ""			    "packageAvailable('lfstat')"
 item	lfoptionsMenu	command		"Load lf options"			loadlfopt		    ""			    "packageAvailable('lfstat')"	
 menu	lfnaMenu	lfstatMenu	""    	 				""			    ""			    ""
-item	lfnaMenu	command		"Summary..."				nalfcheckcalc		    "activelf()"	    "packageAvailable('lfstat')"		    
+item	lfnaMenu	command		"Summary..."				nalfcheckcalc		    "activelf()"	    "packageAvailable('lfstat')"
+menu	lfhelpMenu	lfstatMenu	""					""			    ""			    ""		    
+item	lfhelpMenu	command		"Introduction"				lfstat_intro		    ""			    "packageAvailable('lfstat')"
+
 
 item    topMenu         cascade         "Low-Flow"                              lfstatMenu                  ""                      "packageAvailable('lfstat')"
 item	lfstatMenu	cascade		"Read data"				lfdataMenu		    ""			    "packageAvailable('lfstat')"
@@ -49,5 +52,7 @@ item	lfstatMenu	cascade		"Streamflow deficit"			strdefMenu		    ""			    "packag
 item	lfstatMenu	cascade		"Multistation"				multiMenu		    ""			    "packageAvailable('lfstat')"
 item	lfstatMenu	cascade		"Options"   				lfoptionsMenu		    ""			    "packageAvailable('lfstat')"
 item	lfstatMenu	cascade		"Missing Values"			lfnaMenu		    ""			    "packageAvailable('lfstat')"
+item    lfstatMenu	cascade		"Help"	 				lfhelpMenu		    ""			    "packageAvailable('lfstat')"
+
 
  
