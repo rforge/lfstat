@@ -1,10 +1,10 @@
 Package: lfstat
 Type: Package
 Title: Calculation of Low Flow Statistics for daily stream flow data
-Version: 0.4
-Date: 2013-07-25
+Version: 0.5
+Date: 2013-12-05
 Author: Daniel Koffler and Gregor Laaha
-Maintainer: Daniel Koffler <daniel.koffler@boku.ac.at>
+Maintainer: Gregor Laaha <gregor.laaha@boku.ac.at>
 Description: The "Manual on Low-flow Estimation and Prediction", published by the World Meteorological Organisation (WMO), gives an idea how to analyse stream flow data focusing on low-flow issues. This packages gives functions to compute the described statistics and produce plots similar to the one in the manual.
 License: GPL (>= 2)
 LazyLoad: yes
