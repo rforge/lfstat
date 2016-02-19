@@ -60,6 +60,8 @@ pool_ma,
 pool_ic,
 pool_it,
 find_droughts,
+period,
+apply.seasonal,
 water_year,
 hyear_start,
 tyearsS
