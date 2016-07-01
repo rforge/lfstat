@@ -18,7 +18,7 @@ create_lf2 <- function(x) {
   y <- xts(x, order.by = seq(Sys.Date(), along.with = x, by = "days"))
 
   # using "m^3/d" makes computing the deficit volume easy
-  unit(y) <- "m^3/d"
+  flowunit(y) <- "m^3/d"
 
   return(lfstat:::.check_xts(y))
 }
@@ -118,6 +118,7 @@ test_that("user is warned if minor events are filtered",{
 })
 
 
+# todo
 test_that("volumes are correct, units work",{
 
   smry <- summary(pool_sp(timeSeries[[1]]))
