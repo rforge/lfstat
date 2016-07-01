@@ -25,4 +25,4 @@ Imports:
     plyr
 Suggests:
     testthat
-RoxygenNote: 5.0.1
+
