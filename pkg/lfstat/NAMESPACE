@@ -1,7 +1,7 @@
 importFrom(lattice, barchart, panel.barchart)
 importFrom(latticeExtra, layer)
 import(lmom)
-importFrom(lmomRFA, regsamlmu, regfit, regquant)
+importFrom(lmomRFA, regsamlmu, regfit, regquant, sitequant)
 import(dygraphs)
 import(xts)
 importFrom(zoo, coredata, is.zoo)
@@ -65,14 +65,22 @@ find_droughts,
 apply.seasonal,
 water_year,
 hyear_start,
+"hyear_start<-",
 tyearsS,
 flowunit,
 "flowunit<-",
-fill_na
+fill_na,
+
+regsamlmu,
+regfit,
+regquant,
+sitequant
 )
 
  S3method(hyear_start, data.frame)
  S3method(hyear_start, xts)
+ S3method("hyear_start<-", xts)
+ S3method("hyear_start<-", lfobj)
 
  S3method(createlfobj, ts)
  S3method(createlfobj, lfobj)

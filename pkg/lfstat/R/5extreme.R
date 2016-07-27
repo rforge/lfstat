@@ -513,12 +513,10 @@ evquantile <- function (fit, return.period = NULL) {
   return(fit)
 }
 
-
-
 # wrapper functions for several quantile estimations ----
 # Calculates the quantile of a t-year event and plots them
 tyears <- function (lfobj, event = 1 / probs , probs = 0.01,
-                    dist, check = TRUE, zeta = zetawei, zetawei = NULL,
+                    dist = "wei", check = TRUE, zeta = zetawei, zetawei = NULL,
                     plot = TRUE, col = 1, log = TRUE, legend = TRUE,
                     rp.axis = "top", rp.lab = "Return period",
                     freq.axis = TRUE,
@@ -552,6 +550,13 @@ tyears <- function (lfobj, event = 1 / probs , probs = 0.01,
                 rp.lab = rp.lab, freq.lab = freq.lab, log = log)
   return(result)
 }
+
+# wrapper to support RcmdrPlugin
+tyearsn <- function(lfobj, n = 7, ...) {
+  lfobj$flow <- ma(lfobj$flow, n = n)
+  tyears(lfobj = lfobj, ...)
+}
+
 
 
 # Calculates the quantile of a t-year event and plots them
@@ -601,7 +606,8 @@ tyearsS <- function (lfobj, event = 1 / probs, probs = 0.01, pooling = NULL,
 
 
 # Regional frequency analysis ----
-rfa <- function(lflist, n = 7, event = 100, dist =  c("wei","gev","ln3","gum","pe3")){
+rfa <- function(lflist, n = 7, event = 100,
+                dist =  c("wei", "gev", "ln3", "gum", "pe3")){
   lapply(lflist, lfcheck)
   distr <- match.arg(dist, several.ok = FALSE)
 

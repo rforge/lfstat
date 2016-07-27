@@ -77,9 +77,26 @@ water_year <- function(x, origin = "din", as.POSIX = FALSE,
 }
 
 
-hyear_start <- function(x, abbreviate = FALSE) {
+hyear_start <- function(x) {
   UseMethod("hyear_start")
 }
+
+"hyear_start<-" <- function(x, value) {
+  UseMethod("hyear_start<-")
+}
+
+"hyear_start<-.lfobj" <- function(x, value) {
+  stop("currently not supported for objects of class lfobj")
+}
+
+"hyear_start<-.xts" <- function(x, value) {
+  # also support other inputs
+  if(!value %in% 1:12) stop("must be an integer between 1 and 12.")
+  xtsAttributes(x)$hyearstart <- value
+  return(x)
+}
+
+
 
 
 hyear_start.data.frame <- function(x, abbreviate = FALSE){
