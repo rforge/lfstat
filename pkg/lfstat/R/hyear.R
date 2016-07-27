@@ -77,7 +77,7 @@ water_year <- function(x, origin = "din", as.POSIX = FALSE,
 }
 
 
-hyear_start <- function(x) {
+hyear_start <- function(x, abbreviate = FALSE) {
   UseMethod("hyear_start")
 }
 
