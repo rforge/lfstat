@@ -29,6 +29,7 @@ createlfobj.lfobj <- function(x, hyearstart = NULL, baseflow = NULL,
 }
 
 
+
 # Create a lfobj from a vector of daily flow data and the startdate
 createlfobj.ts <- function(x, startdate, dateformat = "%d/%m/%Y", ...){
 
@@ -96,6 +97,24 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
   class(dat) <- c("lfobj", "data.frame")
   return(dat)
 }
+
+as.lfobj <- function(x, ...){
+  UseMethod("as.lfobj")
+}
+
+
+as.lfobj.xts <- function(x, ...) {
+  if(!is.null(ncol(x)) && ncol(x) != 1) stop("object with one column expected.")
+  df <- data.frame(strsplit_date(time(x)), flow = as.vector(x))
+
+  dat <- createlfobj(x = df, ...)
+  return(dat)
+}
+
+as.lfobj.zoo <- function(x, ...) {
+  as.lfobj.xts(x, ...)
+}
+
 
 
 # hack to make attributes sticky

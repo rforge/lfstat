@@ -1,3 +1,4 @@
+require(testthat)
 context("Examples from 'Guidance of WMO Software Tool for Low-flow Analysis")
 data("ngaruroro")
 ng_seventies <- subset(ngaruroro, hyear %in% 1970:1979)
@@ -23,19 +24,19 @@ test_that("2.6 Flow indices", {
   # q95
   q95 <- Q95(lfobj = ngaruroro, year = "any", yearly = TRUE)
   q95expected <- data.frame(
-    hyear = 1963:2001,
-    flow = c(5.33665, 3.726, 5.6898, 5.93985, 5.3586, 3.6435, 4.551, 4.4426,
-             5.1178, 4.57975, 3.2082, 3.332, 5.352, 5.641, 4.8272, 2.82045,
-             3.4646, 7.419, 6.4718, 4.535, 3.0026, 5.7876, 4.9266, 4.5232,
-             5.517, 5.6335, 4.4486, 4.6822, 4.3602, 5.111, 4.9458, 3.925,
-             5.6932, 6.974, 4.6592, 3.8296, 4.8532, 4.415, 7.2515))
+    hyear = 1964:2001,
+    flow = c(3.7225, 5.6898, 6.12395, 5.3586, 3.6435, 4.9486, 4.3484, 5.1178,
+             4.57975, 3.2082, 3.332, 5.352, 5.641, 4.8272, 2.82045, 3.4646,
+             7.8255, 6.4398, 4.535, 3.0026, 5.97355, 4.9266, 4.5232, 5.505,
+             5.6335, 4.4486, 4.6822, 4.3602, 5.111, 4.9458, 3.925, 5.6932,
+             7.5085, 4.6592, 3.8296, 4.8532, 4.415, 6.78805))
 
   expect_equal(q95, q95expected)
 
 
   # mean annual minimum
   mam <- MAM(lfobj = ngaruroro, n = 7, year = "any", yearly = FALSE)
-  expect_equal(round(mam, 6), 4.426941)
+  expect_equal(round(mam, 6), 4.380613)
 
 
   # base flow index
@@ -104,14 +105,14 @@ test_that("2.8.2 Regional Frequency Analysis", {
 
 
   # Index values
-  expect_equal(rfa$index,
-               c("ng_eighties" = 4.57424285714286,
-                 "ng_nineties" = 4.41441428571429,
-                 "ng_seventies" = 3.92795714285714))
+  expect_equal(round(rfa$index, 4),
+               c("ng_eighties" = 4.6116,
+                 "ng_nineties" = 4.4144,
+                 "ng_seventies" = 3.928))
 
   # T-year region
   expect_equal(round(regquant(0.01, rfa), 5),
-               c("0.01" = 0.59300))
+               c("0.01" = 0.59983))
 
 
 })
@@ -119,18 +120,17 @@ test_that("2.8.2 Regional Frequency Analysis", {
 
 test_that("2.8 Extreme value", {
 
-  rp <- lfstat:::tyearsn(lfobj = ngaruroro, event = 100, n = 7,
+  rp <- tyearsn(lfobj = ngaruroro, event = 100, n = 7,
                          dist = c("wei", "gev", "ln3", "gum", "pe3"))
 
-  rpexpected <- structure(c(2.64712528160508, 2.64712528160508, 2.4752053218681,
-                            2.6131981973912, 2.51385678330189),
+  rpexpected <- structure(c(2.59611, 2.59611, 2.4755, 2.63567, 2.46161),
                           .Dim = c(1L, 5L),
                           .Dimnames = structure(list(
                             `return period` = "100",
                             distribution = c("wei", "gevR", "ln3", "gum", "pe3")),
                             .Names = c("return period", "distribution")))
 
-  expect_equal(rp$T_Years_Event, rpexpected)
+  expect_equal(round(rp$T_Years_Event, 5), rpexpected)
 
 })
 

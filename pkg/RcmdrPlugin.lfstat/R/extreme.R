@@ -2,6 +2,12 @@
 # T-YEARS               #
 #########################
 
+tyearsn <- function(lfobj, n = 7, ...) {
+  lfobj$flow <- lfstat::ma(lfobj$flow, n = n)
+  lfstat::tyears(lfobj = lfobj, ...)
+}
+
+
 tyearscalc <- function(){
 initializeDialog(title=gettextRcmdr("T year event"))
 optionsFrame <-  tkframe(top)
@@ -44,7 +50,7 @@ onOK <- function(){
   n <- tclvalue(MAdays)
    options("RcmdrPlugin.lfstat" =
                         modifyList(getOption("RcmdrPlugin.lfstat"),list(extn = n)))
-  command <- paste('lfstat:::tyearsn(lfobj = ',ActiveDataSet(),', event = ', event,', n = ',n,',dist = c(',distname2,'"))',sep="")
+  command <- paste('tyearsn(lfobj = ',ActiveDataSet(),', event = ', event,', n = ',n,',dist = c(',distname2,'"))',sep="")
   doItAndPrint(command)
   tkfocus(CommanderWindow())
 }#end onOK

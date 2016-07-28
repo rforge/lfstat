@@ -576,19 +576,28 @@ MAannual <- function(lfobj, n=7, breakdays = NULL, year = "any"){
   return (annual)
 }
 
-MAM <- function(lfobj,n=7,year = "any",breakdays = NULL,yearly = FALSE){
+MAM <- function(lfobj, n = 7, year = "any", breakdays = NULL,
+                yearly = FALSE){
   lfcheck(lfobj)
 
   if(!is.null(breakdays)){
     if(!yearly){
-      return(aggregate(MAn~seasonname,data = MAannual(lfobj=lfobj,n=n,breakdays = breakdays,year = year),FUN = mean))}else{
-        return(MAannual(lfobj,n,breakdays,year = year))}
+      return(aggregate(MAn ~ seasonname,
+                       data = MAannual(lfobj = lfobj,n = n,
+                                       breakdays = breakdays, year = year),
+                       FUN = mean))
+    }else{
+      return(MAannual(lfobj, n, breakdays, year = year))
+    }
   }
 
   if(yearly){
-    MAannual(lfobj,n,year = year)}else{
-      mean(MAannual(lfobj,n,year = year)$MAn)}
+    MAannual(lfobj, n, year = year)
+  }else{
+    mean(MAannual(lfobj, n, year = year)$MAn)
+  }
 }
+
 #########################
 #Seasonality Ratio      #
 #########################

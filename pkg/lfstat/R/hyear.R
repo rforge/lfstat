@@ -86,7 +86,11 @@ hyear_start <- function(x, abbreviate = FALSE) {
 }
 
 "hyear_start<-.lfobj" <- function(x, value) {
-  stop("currently not supported for objects of class lfobj")
+  attr(x, "lfobj")$hyearstart <- value
+  time <- as.Date(with(x, as.Date(paste(year, month, day, sep = "-"))))
+
+  x$hyear <- as.numeric(as.character(water_year(x = time, origin = value)))
+  return(x)
 }
 
 "hyear_start<-.xts" <- function(x, value) {
