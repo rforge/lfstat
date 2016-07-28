@@ -2,7 +2,7 @@ Package: lfstat
 Type: Package
 Title: Calculation of Low Flow Statistics for Daily Stream Flow Data
 Version: 0.9.1
-Date: 2016-07-27
+Date: 2016-07-28
 Author: Daniel Koffler, Tobias Gauster and Gregor Laaha
 Maintainer: Tobias Gauster <t.gauster@boku.ac.at>
 Description: The "Manual on Low-flow Estimation and Prediction", published by
