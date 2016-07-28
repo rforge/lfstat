@@ -7,6 +7,7 @@ Author: Daniel Koffler and Gregor Laaha
 Maintainer: Tobias Gauster <t.gauster@boku.ac.at>
 Depends: R (>= 2.14.0), lfstat (>= 0.9.0)
 Imports: Rcmdr (>= 1.9-5)
+Suggests: testthat
 Description: Provides an Rcmdr "plug-in" based on the lfstat package for low flow analysis.
 License: GPL (>= 2)
 RcmdrModels:
