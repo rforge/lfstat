@@ -29,7 +29,6 @@ createlfobj.lfobj <- function(x, hyearstart = NULL, baseflow = NULL,
 }
 
 
-
 # Create a lfobj from a vector of daily flow data and the startdate
 createlfobj.ts <- function(x, startdate, dateformat = "%d/%m/%Y", ...){
 
