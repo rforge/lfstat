@@ -1,4 +1,3 @@
-require(testthat)
 context("Examples from 'Guidance of WMO Software Tool for Low-flow Analysis")
 data("ngaruroro")
 ng_seventies <- subset(ngaruroro, hyear %in% 1970:1979)
