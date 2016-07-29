@@ -73,11 +73,7 @@ flowunit,
 "flowunit<-",
 fill_na,
 as.lfobj,
-
-regsamlmu,
-regfit,
-regquant,
-sitequant
+is.lfobj
 )
 
  S3method(hyear_start, data.frame)

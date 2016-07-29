@@ -59,11 +59,10 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
   }
 
 
-  # try to guess from column hyear
-  if((is.null(hyearstart) || (!hyearstart %in% 1:12))){
+  # try to guess from attributes or column hyear, otherwise default to January
+  if((is.null(hyearstart))){
     hyearstart <- hyear_start(x)
   }
-
 
 
   meta <- as.list(meta)
@@ -71,11 +70,7 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
   x <- as.data.frame(x)
 
   dat <- x[, cols]
-  time <- with(x, as.Date(paste(year, month, day, sep = "-")))
-
-  # hydrological year is kept as numeric for backwards compatibility
-  dat$hyear <- as.numeric(as.character(water_year(time, origin = hyearstart)))
-
+  time <- time.lfobj(x)
 
   fullseq <- seq(from = min(time), to = max(time), by = "day")
   missing <- fullseq[!fullseq %in% time]
@@ -84,6 +79,10 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
     gaps <- data.frame(strsplit_date(missing), flow = NA)
     dat <- rbind(dat, gaps)
   }
+
+  # hydrological year is kept as numeric for backwards compatibility
+  dat$hyear <- as.numeric(as.character(water_year(time.lfobj(dat),
+                                                  origin = hyearstart)))
 
   # reorder if nescessary
   if(is.unsorted(time) || length(missing)) dat <- dat[order(c(time, missing)), ]
@@ -128,14 +127,20 @@ as.lfobj.zoo <- function(x, ...) {
 }
 
 
-
+time.lfobj <- function(x) {
+  with(x, as.Date(paste(year, month, day, sep = "-")))
+}
 
 
 lfcheck <- function(lfobj){
-  if(!inherits(lfobj,"lfobj")){
+  if(!is.lfobj(lfobj)){
     stop("This functions is designed for objects of the class 'lfobj'. ",
          "Please use 'createlfobj()' or see '?createlfobj' for more information")
   }
+}
+
+is.lfobj <- function(x) {
+  inherits(x, "lfobj")
 }
 
 

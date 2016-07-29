@@ -551,13 +551,6 @@ tyears <- function (lfobj, event = 1 / probs , probs = 0.01,
   return(result)
 }
 
-# wrapper to support RcmdrPlugin
-tyearsn <- function(lfobj, n = 7, ...) {
-  lfobj$flow <- ma(lfobj$flow, n = n)
-  tyears(lfobj = lfobj, ...)
-}
-
-
 
 # Calculates the quantile of a t-year event and plots them
 tyearsS <- function (lfobj, event = 1 / probs, probs = 0.01, pooling = NULL,
@@ -613,10 +606,10 @@ rfa <- function(lflist, n = 7, event = 100,
 
   # compute annual minima and sample L-moments for every site
   minima <- lapply(lflist, function(x) MAannual(x, n)$MAn)
-  lmom <- regsamlmu(minima)
+  lmom <- lmomRFA::regsamlmu(minima)
 
   # fit a regional frequency distribution
-  rfit <- regfit(lmom, distr)
+  rfit <- lmomRFA::regfit(lmom, distr)
 
   return(rfit)
 }
@@ -626,7 +619,7 @@ rfaplot <- function(lflist, n = 7, ...){
 
   # compute annual minima and sample L-moments for every site
   minima <- lapply(lflist, function(x) MAannual(x, n)$MAn)
-  lmom <- regsamlmu(minima)
+  lmom <- lmomRFA::regsamlmu(minima)
 
   # L-moment ratio diagram
   return(lmrd(lmom, ...))

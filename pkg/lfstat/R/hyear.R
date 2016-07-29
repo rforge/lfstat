@@ -77,9 +77,6 @@ water_year <- function(x, origin = "din", as.POSIX = FALSE,
 }
 
 
-hyear_start <- function(x, abbreviate = FALSE) {
-  UseMethod("hyear_start")
-}
 
 "hyear_start<-" <- function(x, value) {
   UseMethod("hyear_start<-")
@@ -87,7 +84,7 @@ hyear_start <- function(x, abbreviate = FALSE) {
 
 "hyear_start<-.lfobj" <- function(x, value) {
   attr(x, "lfobj")$hyearstart <- value
-  time <- as.Date(with(x, as.Date(paste(year, month, day, sep = "-"))))
+  time <- time(x)
 
   x$hyear <- as.numeric(as.character(water_year(x = time, origin = value)))
   return(x)
@@ -101,6 +98,9 @@ hyear_start <- function(x, abbreviate = FALSE) {
 }
 
 
+hyear_start <- function(x, abbreviate = FALSE) {
+  UseMethod("hyear_start")
+}
 
 
 hyear_start.data.frame <- function(x, abbreviate = FALSE){

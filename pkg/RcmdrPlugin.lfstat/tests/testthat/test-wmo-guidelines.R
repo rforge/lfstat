@@ -110,7 +110,7 @@ test_that("2.8.2 Regional Frequency Analysis", {
                  "ng_seventies" = 3.928))
 
   # T-year region
-  expect_equal(round(regquant(0.01, rfa), 5),
+  expect_equal(round(lmomRFA::regquant(0.01, rfa), 5),
                c("0.01" = 0.59983))
 
 
