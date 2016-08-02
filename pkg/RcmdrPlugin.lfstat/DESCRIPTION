@@ -11,4 +11,3 @@ Suggests: testthat
 Description: Provides an Rcmdr "plug-in" based on the lfstat package for low flow analysis.
 License: GPL (>= 2)
 RcmdrModels:
-
