@@ -52,6 +52,15 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
          "! Please look at the help files for more information.")
   }
 
+  notNumeric <- names(which(!sapply(x[, cols], is.numeric)))
+  for(i in notNumeric) {
+    xx <- suppressWarnings(as.numeric(as.character(x[, i])))
+    if(sum(is.na(xx)) > sum(is.na(x[, i]))) {
+      stop("column '", i, "' must be numeric.")
+    }
+    x[, i] <- xx
+  }
+
 
   if(!(is.null(hyearstart) || hyearstart %in% 1:12)){
     stop("if set, hyearstart must be an integer between 1 and 12")
@@ -65,6 +74,13 @@ createlfobj.data.frame <- function(x, hyearstart = NULL, baseflow = TRUE,
 
 
   meta <- as.list(meta)
+
+  # allow flowunit as an alias for unit
+  idx <- which(names(meta) == "flowunit")
+  if(length(idx)) {
+    names(meta)[idx] <- "unit"
+  }
+
   meta[["hyearstart"]] <- hyearstart
   x <- as.data.frame(x)
 
