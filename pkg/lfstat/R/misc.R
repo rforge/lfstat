@@ -19,7 +19,7 @@ ma <- function(x, n, sides = "past")
     y <- filter(x, filter = rep(x = 1/n, times = n), sides = sides)
   }
 
-   # filter() returns a ts-object
+  # filter() returns a ts-object
   return(as.numeric(y))
 }
 
@@ -223,7 +223,7 @@ group <- function(x, new.group.na = TRUE, as.factor = TRUE) {
   if(as.factor) {
     return(factor(grp))
   } else {
-    return(grp)
+    return(as.integer(grp))
   }
 
 }
@@ -318,7 +318,62 @@ agg.season  <- function(x, fun, varying) {
   tapply(as.vector(x), season, FUN = fun)
 }
 
+
+season <- function(x, start = c(winter = as.Date("2005-12-01"),
+                                spring = as.Date("2005-03-01"),
+                                summer = as.Date("2005-06-01"),
+                                autumn = as.Date("2005-09-01")))
+{
+  UseMethod("season")
+}
+
+season.numeric <- function(x, start = c(winter = as.Date("2005-12-01"),
+                                        spring = as.Date("2005-03-01"),
+                                        summer = as.Date("2005-06-01"),
+                                        autumn = as.Date("2005-09-01")))
+{
+  nam  <- names(start)
+  if(is.null(nam) || any(nam == "")) {
+    nam <- paste0("s", seq_along(start))
+    warning("No names for seasons provided, using generic names.")
+  }
+
+  if(inherits(start, "Date") | inherits(start, "POSIXct")) {
+    start <- as.numeric(format(start, "%j"))
+  }
+
+  names(start) <- nam
+  start <- sort(start)
+
+  if(!is.numeric(start)) stop("Cannot coerce argument 'start' to numeric.")
+
+  idx <- rowSums(outer(x, start, ">="))
+  idx[idx == 0] <- length(start)
+
+  return(factor(names(start)[idx], levels = nam))
+}
+
+season.Date <- function(x, start = c(winter = as.Date("2005-12-01"),
+                                     spring = as.Date("2005-03-01"),
+                                     summer = as.Date("2005-06-01"),
+                                     autumn = as.Date("2005-09-01")))
+{
+  season(as.numeric(format(x, format = "%j")), start = start)
+}
+
+season.POSIXct <- function(x, start = c(winter = as.Date("2005-12-01"),
+                                        spring = as.Date("2005-03-01"),
+                                        summer = as.Date("2005-06-01"),
+                                        autumn = as.Date("2005-09-01")))
+{
+  season(as.numeric(format(x, format = "%j")), start = start)
+}
+
+
+
 # default fuer origin sollte aus varying erraten werden
+# todo: autodetect origin
+# write wrapper minima
 apply.seasonal <- function(x, varying, fun = function(x) min(x, na.rm = TRUE),
                            aggregate = NULL, replace.inf = TRUE, origin = 1) {
 
